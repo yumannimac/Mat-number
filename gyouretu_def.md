@@ -15,6 +15,23 @@
     };
   </script>
 
+$$
+\newcommand{\la}{\lambda}
+\newcommand{\e}{\varepsilon}
+\renewcommand{\l}{\left}
+\renewcommand{\r}{\right}
+\newcommand{\del}{\partial}
+\newcommand{\q}{\quad}
+\newcommand{\qq}{\qquad}
+\newcommand{\dis}{\displaystyle}
+\newcommand{\dc}{\Leftrightarrow}
+\def\rank{\mathrm{rank}}
+\newcommand{\hr}{\hrulefill}
+\newcommand{\m}{\item}
+\newcommand{\drac}[2]{\dfrac{#1}{#2}}
+\newcommand{\delu}[3][]{\drac{\partial^{#1} {#2}}{\partial {#3}^{#1}}}
+$$
+
 # 複素数の導入に含まれる問題 {#introduction}
 
 虚数単位$i$は通常二次方程式 $$\label{虚数} x^2+1=0$$
