@@ -192,7 +192,7 @@ $$
     \cos \theta & -\sin \theta \\
     \sin \theta & \cos \theta 
     \end{pmatrix} =e^r R_{\theta }=e^r \l(E\cos \theta +I\sin \theta \r)
-    $$
+$$
     
 であることを示す．これは有名なオイラーの公式の行列表記である．
 (1)によって を示せば十分である．
@@ -208,11 +208,11 @@ $$
         g'\l(r\r) & -h'\l(r\r) \\
         h'\l(r\r) & g'\l(r\r)   
     }
-    $$
+$$
      である． 
     
     
-    $$
+$$
     \begin{split}
         \dv{}{r}\exp \l(rE\r)=\, & \lim_{\Delta r \to 0}\drac{1}{\Delta r}\left\{\exp \l(\left(r+\Delta r\right)E\r)-\exp \l(rE \r)\right\} \\
         \stackrel{(1)}{=}\; & 
@@ -222,7 +222,7 @@ $$
         \\
         \stackrel{(3)}{=}\; & \exp \l(rE\r) 
     \end{split}
-    $$
+$$
      より
 
 
@@ -232,7 +232,7 @@ $$
     0& 0\\
     0& 0
     \end{pmatrix}
-    $$
+$$
     
 から$g'\l(r\r) =h'\l(r\r) =0$．したがって$f\l(r\r)$は定数で
 
@@ -266,11 +266,11 @@ $$
         \stackrel{}{=}\, & \lim_{\Delta \theta  \to 0}I\l(\Delta \theta I\r) ^{-1}\l\{\exp \l(\Delta \theta I\r) -\exp \l(O\r) \r\}\exp \l(\theta I\r) \\
         \stackrel{(3)}{=}\, & I \exp \l(\theta I\r) 
     \end{split}
-    $$
+$$
      であり 
     
     
-    $$
+$$
     \dv{}{\theta }R_{-\theta }=\pmat{
         -\sin \theta &\cos \theta \\
         -\cos \theta &-\sin \theta 
@@ -284,7 +284,7 @@ $$
     -1& 0
     \end{pmatrix} 
     =-R_{-\theta }I
-    $$
+$$
      より
 
 
@@ -329,7 +329,7 @@ $$
     =\, &   \lim_{\l|H\r|  \to 0} \exp A\l\{\exp \l(H\r) -E\r\}{H}^{-1}\\
     =\, & \exp A
     \end{split}
-    $$
+$$
     
 であることから写像$\exp$が複素数平面全域において全方向から微分可能つまり正則であることも確認できる．
 
@@ -343,7 +343,7 @@ $$
 \begin{aligned}
     e^{\theta I}=E \cos \theta +I \sin \theta \label{オイラー１}\\
     e^{-\theta I}=E \cos \theta -I \sin \theta\label{オイラー２}\end{aligned}
-    $$
+$$
     
 [\[オイラー１\]](#オイラー１){reference-type="eqref"
 reference="オイラー１"}と[\[オイラー２\]](#オイラー２){reference-type="eqref"
@@ -371,7 +371,8 @@ $$
      \cos \Theta &:=\drac{e^{\Theta I}+e^{-\Theta I}}{2}\\
 \label{cosの定義}
      \sin \Theta &:=\drac{e^{\Theta I}-e^{-\Theta I }}{2}I^{-1}\end{aligned}
-     $$
+
+$$
      
 と定めることにする．[\[sinの定義\]](#sinの定義){reference-type="eqref"
 reference="sinの定義"}，[\[cosの定義\]](#cosの定義){reference-type="eqref"
@@ -382,7 +383,7 @@ $$
 \begin{aligned}
     \cos \l(\theta E\r) =E \cos \theta \\
     \sin \l(\theta E\r) =E \sin \theta \end{aligned}
-    $$
+$$
     
 である．行列の微分公式から 
 
@@ -391,7 +392,7 @@ $$
 \begin{aligned}
     \dv{}{\Theta}\cos \Theta&=\drac{Ie^{I\Theta}-Ie^{-I\Theta}}{2}=-\drac{e^{\Theta I}-e^{-\Theta I}}{2}I^{-1}=-\sin \Theta\\
     \dv{}{\Theta}\sin \Theta&=\drac{Ie^{I\Theta}+Ie^{-I\Theta}}{2}I^{-1}=\drac{e^{\Theta I}+e^{-\Theta I}}{2}=\cos \Theta\end{aligned}
-    $$
+$$
     
 が得られる．これは実数における微分と対応し，かつここから複素数の写像$\cos$，$\sin$が正則であることが確認できる．
 
@@ -421,7 +422,7 @@ $$
         &\qq \qq
         +\l(\int_{y_0}^{y_n} g\l(x\l(y\r) ,y\r) dy+\int_{x_0}^{x_n} h\l(x,y\l(x\r) \r) \, dx\r) I
     \end{split}
-    $$
+$$
      である．
 
 ## コーシーの積分定理
@@ -436,7 +437,7 @@ $$
         &\qq 
         +I\int_{t_0}^{t_n} \left\{g\l(x\l(t\r) ,y\l(t\r) \r) \, y'\l(t\r) +h\l(x\l(t\r) ,y\l(t\r) \r) \, x'\l(t\r)\right\}\, dt 
     \end{split}
-    $$
+$$
      であることがわかる．
 
 ここで$f$が正則であるとすると，コーシー・リーマンの関係式
@@ -448,15 +449,15 @@ $$
         \delu{g}{y}&=-\delu{h}{x} \label{cl1}\\ 
         \delu{g}{x}&=\delu{h}{y}\label{cl2}
     \end{aligned}
-    $$
+$$
      を満たす． 
     
     
-    $$
+$$
     \begin{aligned}
     u&=\int_{}^{} g \, dx+\int_{}^{} \left\{\l(-h\r) -\delu{}{y}\l(\int_{}^{} g \, dx\r)    \right\} dy\\ 
     v&=\int_{}^{} h \, dx+\int_{}^{} \left\{g - \delu{}{x}\l(\int_{}^{} g \, dy\r)\right\} \, dx\end{aligned}
-    $$
+$$
     
 とおくと[\[cl1\]](#cl1){reference-type="eqref"
 reference="cl1"},[\[cl2\]](#cl2){reference-type="eqref"
@@ -474,7 +475,7 @@ $$
         &\qq  +I\left\{ v\l(x\l(t_n\r) ,y\l(t_n\r) \r) -v\l(x\l(t_0\r) ,y\l(t_0\r) \r)  \right\}\\
         &=\, O
     \end{split}
-    $$
+$$
     
 である．コーシーの積分定理が合成関数の微分公式としてあっさり証明できてしまったわけである．（？）本来あるべき「単純閉曲線$C$が含まれる領域$D$の内部で常に正則である」$\cdots (*)$という条件が無視されているが，これは$u$と$v$がともに連続であるという条件に言い換えられたと考えられる．（例えば$f\l(Z\r) =Z^{-1}$の単位円上の積分を$x=\cos t,y=\sin t$の置換積分により計算してみればわかる．）
 
@@ -514,7 +515,7 @@ $$
 $$
 \oint_{C}^{} f\l(Z\r) \l(Z-A\r) ^{-1}\, dZ 
     = \oint_{C} \left\{ f\l(Z\r) -f\l(A\r)  \right\}\l(Z-A\r) ^{-1}\, dZ+2\pi If\l(A\r)
-    $$
+$$
     
 であり第一項は$C$の半径$\rho$として$C$上において$\l|f\l(Z\r) -f\l(A\r) \r| <\e$とすると
 
@@ -523,7 +524,7 @@ $$
 $$
 \l|\oint_{C} \left\{ f\l(Z\r) -f\l(A\r)  \right\}\l(Z-A\r) ^{-1}\, dZ\r| 
     \leq  \oint_{C} \drac{1}{\rho}\e \, dZ=2\pi \rho\drac{1}{\rho}\e=2\pi \e
-    $$
+$$
     
 であり，$\e \to 0$で$2\pi \e \to 0$になるので示す等式が得られた．
 
