@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Begin Jekyll SEO tag v2.8.0 -->
+	<title>Mat-number</title>
+	<meta name="generator" content="Jekyll v3.9.2" />
+	<meta property="og:title" content="Mat-number" />
+	<meta property="og:locale" content="en_US" />
+	<link rel="canonical" href="https://yumannimac.github.io/Mat-number/" />
+	<meta property="og:url" content="https://yumannimac.github.io/Mat-number/" />
+	<meta property="og:site_name" content="Mat-number" />
+	<meta property="og:type" content="website" />
+	<meta name="twitter:card" content="summary" />
+	<meta property="twitter:title" content="Mat-number" />
+	<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","headline":"Mat-number","name":"Mat-number","url":"https://yumannimac.github.io/Mat-number/"}</script>
+	<!-- End Jekyll SEO tag -->
+
+	<link rel="stylesheet" href="/Mat-number/assets/css/style.css?v=9e76345d893de0c380fbc8e5c2a8eb67ba37ec93">
+	<!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+	<!-- Setup Google Analytics -->
+
+
+
+	<!-- You can set your favicon here -->
+	<!-- link rel="shortcut icon" type="image/x-icon" href="/Mat-number/favicon.ico" -->
+
+	<!-- end custom head snippets -->
+
+</head>
+
+<body>
+	<div class="container-lg px-3 my-5 markdown-body">
+
+		<h1><a href="https://yumannimac.github.io/Mat-number/">Mat-number</a></h1>
+
+
+		<script src="main.js"></script>
+
+		<script type="text/javascript" id="MathJax-script" async=""
+			src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+			</script>
+
+		<script>
+			MathJax = {
+				loader: { load: ['[tex]/physics', '[tex]/newcommand', '[tex]/mathtools'] },
+				tex: {
+					inlineMath: [['$', '$'], ['\\(', '\\)']],
+					packages: { '[+]': ['physics', 'newcommand', 'mathtools'] },
+				},
+				chtml: {
+					matchFontHeight: false
+				}
+			};
+		</script>
+
+		\[\newcommand{\la}{\lambda}
+		\newcommand{\e}{\varepsilon}
+		\renewcommand{\l}{\left}
+		\renewcommand{\r}{\right}
+		\newcommand{\del}{\partial}
+		\newcommand{\q}{\quad}
+		\newcommand{\qq}{\qquad}
+		\newcommand{\dis}{\displaystyle}
+		\newcommand{\dc}{\Leftrightarrow}
+		\def\rank{\mathrm{rank}}
+		\newcommand{\hr}{\hrulefill}
+		\newcommand{\m}{\item}
+		\newcommand{\drac}[2]{\dfrac{#1}{#2}}
+		\newcommand{\delu}[3][]{\drac{\partial^{#1} {#2}}{\partial {#3}^{#1}}}
+		\newcommand{\pmat}[1]{\begin{pmatrix}#1\end{pmatrix}}
+		\newcommand{\vmat}[1]{\begin{vmatrix}#1\end{vmatrix}}\]
+<h1 id="introduction">複素数の導入に含まれる問題</h1>
+<p>虚数単位<span class="math inline">\(i\)</span>は通常二次方程式 <span
+class="math display">\[\label{虚数} x^2+1=0\]</span> の相異なる<span
+class="math inline">\(2\)</span>解の<span
+class="math inline">\(1\)</span>つとして定義され，複素数は<span
+class="math inline">\(1\)</span>と<span
+class="math inline">\(i\)</span>の線型結合として定義される．しかし，そもそも「解」というのは何かということが問題になってくる．「複素数」というくらいだから数でなければならないはずであるが複素数を「知らない」段階では数とは当然実数のことである．とすれば，虚数単位<span
+class="math inline">\(i\)</span>を「<span
+class="math inline">\(2\)</span>乗すると<span
+class="math inline">\(-1\)</span>になる‘実数’」として定義してしまっていることになっているのではないか．（そのような実数など存在しない．）このままでは虚数を用いて証明される実数の性質（恒等式など）であっても「虚数は存在しない」という一言で否定することができてしまうような気さえする．</p>
+<p>今回は本問題を解決するため，<a href="#虚数"
+data-reference-type="eqref"
+data-reference="虚数">[虚数]</a>を二次正方行列の行列方程式 <span
+class="math display">\[X^2+E=0\]</span> と読み替え，（<span
+class="math inline">\(E\)</span>は単位行列とした．）解の一つとして虚数単位を定義する立場から複素数の諸性質と複素関数の微分積分を考えることにする．ついでにコーシーの積分定理の証明（グリーンの定理や微小三角形を用いるもの）にも不満があって書いている途中にパラメータ積分として証明できることをたまたま思いついたのでその証明も残した．（が，よく考えると結局無理だった．）あと微分方程式やテイラー展開を使わずにオイラーの公式を導いた．複素数がテーマなので，行列版代数学の基本定理を示すことまでを目標とする．</p>
+<h1 id="複素数の定義">複素数の定義</h1>
+<h2 id="複素数">複素数</h2>
+<p><span class="math inline">\(a，b\in{\mathbb{R}}\)</span>に対し，
+<span class="math display">\[aE+bI\]</span> をと呼ぶ．ただし，<span
+class="math inline">\(E\)</span>は二次正方単位行列，<span
+class="math inline">\(I\)</span>は<span
+class="math inline">\(2\)</span>乗すると<span
+class="math inline">\(-E\)</span>になる行列の一つとする．ここでは簡単のため
+<span class="math display">\[I=
+\begin{pmatrix}
+0 &amp; -1 \\
+1 &amp; 0 \\
+\end{pmatrix}\]</span> として考える．すなわち <span
+class="math display">\[aE+bI=
+a\begin{pmatrix}
+1 &amp; 0 \\
+0 &amp; 1\\
+\end{pmatrix}+b
+\begin{pmatrix}
+0 &amp; -1 \\
+1 &amp; 0 \\
+\end{pmatrix}
+=\begin{pmatrix}
+a &amp; -b \\
+b &amp; a \\
+\end{pmatrix}\]</span>
+という“行列”を複素数と呼ぶことにするのである．</p>
+<h2 id="定義の由来">定義の由来</h2>
+<p>二次正方行列として考えたのは，体にする(四則演算ができるようにする)ためである．</p>
+<h3 class="unnumbered" id="解釈1">解釈1</h3>
+<p>回転行列 <span class="math display">\[R_{\theta}=\begin{pmatrix*}[r]
+\cos\theta &amp; -\sin\theta\\
+\sin\theta &amp; \cos\theta
+\end{pmatrix*}\]</span> を考える．いま <span
+class="math display">\[-E=R_{\pi}\]</span> より， <span
+class="math inline">\(2\)</span> 乗すると <span
+class="math inline">\(-E\)</span> になる行列として <span
+class="math display">\[I=R_{\frac{\pi}{2}}=\begin{pmatrix}
+0&amp;-1\\
+1&amp;0
+\end{pmatrix}\]</span>
+を考えるのが自然であるような気がする．この方法で複素数を構成すると <span
+class="math display">\[R_{\theta}=E{\cos\theta}+I{\sin\theta}\]</span>
+となり，複素数平面としてのイメージがしやすくなるという利点がある．</p>
+<h3 class="unnumbered" id="解釈2">解釈2</h3>
+<p><span class="math inline">\(I\)</span> と<span
+class="math inline">\(E\)</span> が一次独立であるようにするため <span
+class="math display">\[I=\begin{pmatrix}
+0&amp;b\\
+c&amp;0
+\end{pmatrix}\]</span> と仮におくと <span
+class="math display">\[I^2=bcE\]</span> より <span
+class="math inline">\(bc=-1\)</span> でなければならない．<span
+class="math inline">\(b，c\in\mathbb{Z}\)</span>として <span
+class="math display">\[(b，c)=(1,-1),(-1,1)\]</span> である．後者を<span
+class="math inline">\(I\)</span>とおけば，前者は<span
+class="math inline">\(-I\)</span>で表せる．この解釈においても <span
+class="math display">\[I=\begin{pmatrix}
+0&amp;-1\\
+1&amp;0
+\end{pmatrix}\]</span> である．</p>
+<h1 id="複素数の性質">複素数の性質</h1>
+<p>以後複素数の集合を<span
+class="math inline">\(\mathbb{C}\)</span>と呼ぶことにする．<span
+class="math inline">\(\mathbb{C}\in
+M_2\l(\mathbb{R}\r)\)</span>である．ここで<span
+class="math inline">\(M_2\l(\mathbb{R}\r)\)</span>は実二次正方行列の集合とした．複素数の加減乗法は行列のものを用いて定義する．<span
+class="math inline">\(\mathbb{C}\)</span>には乗法の単位元<span
+class="math inline">\(E\)</span>，零元<span
+class="math inline">\(O\)</span>，<span
+class="math inline">\(O\)</span>でない元<span
+class="math inline">\(A\)</span>に対する逆元<span
+class="math inline">\(A^{-1}\)</span>の存在，乗法の可換性から<span
+class="math inline">\(\mathbb{C}\)</span>は体である．</p>
+<p>以下は適宜計算して示すこと．</p>
+<ul>
+<li><p><span class="math inline">\(\forall A,B\in
+\mathbb{C}\  AB=BA\)</span></p></li>
+<li><p><span class="math inline">\(\left( aE+bI
+\right)^{-1}=\drac{1}{a^2+b^2}\l(aE-bI\r)\)</span></p></li>
+</ul>
+<p><span class="math inline">\(\sqrt{\det
+A}=\sqrt{a^2+b^2}\)</span>を<span
+class="math inline">\(A\)</span>の絶対値と呼ぶことにして，ここだけの記号として<span
+class="math inline">\(\l|A\r|\)</span>（<span class="math inline">\(\det
+A\)</span>と区別することに注意）と表すことにする．</p>
+<h1 id="複素数の微分">複素数の微分</h1>
+<p>写像<span class="math inline">\(f:\mathbb{C}\to
+\mathbb{C}\)</span>の微分を以下のように定義する．（ただし<span
+class="math inline">\(O \neq H\in \mathbb{C}\)</span>とする．） <span
+class="math display">\[\dv{f\l(Z\r) }{Z}\bigg|_{Z=A}=\lim_{\l|H\r|  \to
+0}\l\{f\l(A+H\r) -f\l(A\r) \r\} H^{-1}\]</span></p>
+<h2 id="行列の微分公式">行列の微分公式</h2>
+<h2 id="オイラーの公式">オイラーの公式</h2>
+<p>写像<span class="math inline">\(\exp : \mathbb{C}
+\to  \mathbb{C}\)</span>；微分可能 を以下を満たす写像として定義する．
+写像<span
+class="math inline">\(\exp\)</span>が存在しかつ一通りに定まる，すなわち<span
+class="math inline">\(\forall r,\theta \in \mathbb{R}\)</span>に対して
+<span class="math display">\[\exp \l(rE+\theta I\r) =e^r \begin{pmatrix}
+    \cos \theta &amp; -\sin \theta \\
+    \sin \theta &amp; \cos \theta
+    \end{pmatrix} =e^r R_{\theta }=e^r \l(E\cos \theta +I\sin \theta
+\r)\]</span>
+であることを示す．これは有名なオイラーの公式の行列表記である．
+(1)によって を示せば十分である．</p>
+<h3 class="unnumbered" id="の証明">［1］の証明</h3>
+<p><span class="math inline">\(f: \mathbb{R}\to \mathbb{C}，r\mapsto
+f\l(r\r)=e^{-r}\exp \l(rE\r)\)</span>とする．<span
+class="math inline">\(f\l(r\r) =g\l(r\r) E+h\l(r\r)
+I\)</span>であるとすると， <span class="math display">\[\dv{}{r}
+f\l(r\r) =\pmat{
+        g&#39;\l(r\r) &amp; -h&#39;\l(r\r) \\
+        h&#39;\l(r\r) &amp; g&#39;\l(r\r)   
+    }\]</span> である． <span class="math display">\[\begin{split}
+        \dv{}{r}\exp \l(rE\r)=\, &amp; \lim_{\Delta r \to
+0}\drac{1}{\Delta r}\left\{\exp \l(\left(r+\Delta r\right)E\r)-\exp
+\l(rE \r)\right\} \\
+        \stackrel{(1)}{=}\; &amp;
+        \lim_{\Delta r \to 0}\drac{1}{\Delta r}\l\{\exp \l(\Delta r E
+\r) -\exp \l(O\r) \r\} \exp \l(r E\r)
+        \\
+        =\, &amp;  \lim_{\Delta r \to 0}\l(\Delta r E\r) ^{-1}\l\{\exp
+\l(\Delta r E \r) -\exp \l(O\r) \r\} \exp \l(r E\r)
+        \\
+        \stackrel{(3)}{=}\; &amp; \exp \l(rE\r)
+    \end{split}\]</span> より <span
+class="math display">\[\dv{}{r}f\l(r\r) =-e^{-r}\exp \l(rE \r)
++e^{-r}\exp \l(r E\r) =O=\begin{pmatrix}
+    0&amp; 0\\
+    0&amp; 0
+    \end{pmatrix}\]</span> から<span class="math inline">\(g&#39;\l(r\r)
+=h&#39;\l(r\r) =0\)</span>．したがって<span
+class="math inline">\(f\l(r\r)\)</span>は定数で <span
+class="math display">\[f\l(r\r) =f\l(0\r) =\exp \l(O\r)
+\stackrel{(2)}{=}E\]</span> である． 以上より <span
+class="math display">\[\exp \l(rE\r)=e^r E\]</span>
+であることが示された．（証明終）</p>
+<h3 class="unnumbered" id="の証明-1">［2］の証明</h3>
+<p><span class="math inline">\(\Theta: \mathbb{R}\to \mathbb{C}，\theta
+\mapsto \Theta\l(\theta \r)=R_{-\theta }\exp \l(\theta I\r) =\left(
+E\cos \theta -I\sin \theta \right)
+\exp \l(\theta I\r)\)</span>とする． <span
+class="math inline">\(\Theta\l(\theta \r) =\varphi \l(\theta \r)E
++\phi\l(\theta \r)I\)</span>とすると <span
+class="math display">\[\begin{split}
+        \dv{}{\theta }\exp \l(\theta I\r)
+        =\, &amp;
+        \lim_{\Delta \theta  \to 0} \drac{1}{\Delta \theta }\l\{\exp
+\l(\theta +\Delta \theta \r) I-\exp \l(\theta I\r) \r\} \\
+        \stackrel{(1)}{=}\,&amp;  \lim_{\Delta \theta  \to
+0}\drac{1}{\Delta \theta }\l\{\exp \l(\Delta \theta I\r) -\exp \l(O\r)
+\r\}\exp \l(\theta I\r)
+        \\
+        \stackrel{}{=}\, &amp; \lim_{\Delta \theta  \to 0}I\l(\Delta
+\theta I\r) ^{-1}\l\{\exp \l(\Delta \theta I\r) -\exp \l(O\r) \r\}\exp
+\l(\theta I\r) \\
+        \stackrel{(3)}{=}\, &amp; I \exp \l(\theta I\r)
+    \end{split}\]</span> であり <span
+class="math display">\[\dv{}{\theta }R_{-\theta }=\pmat{
+        -\sin \theta &amp;\cos \theta \\
+        -\cos \theta &amp;-\sin \theta
+    }=
+    \pmat{
+        \cos \theta &amp;\sin \theta \\
+        -\sin \theta &amp;\cos \theta
+    }
+    \begin{pmatrix}
+    0&amp; 1\\
+    -1&amp; 0
+    \end{pmatrix}
+    =-R_{-\theta }I\]</span> より <span class="math display">\[\dv{
+}{\theta }\Theta\l(\theta \r)=-R_{-\theta} I \exp
+\l(\theta  I\r)+R_{-\theta} I \exp \l(\theta  I\r)  =O.\]</span>
+［1］同様<span class="math inline">\(\varphi&#39; \l(\theta \r)
+=\phi&#39; \l(\theta \r) =0\)</span>より<span
+class="math inline">\(\Theta\l(\theta \r)\)</span>は定数であり <span
+class="math display">\[\Theta\l(\theta \r) =\Theta\l(0\r) =\exp \l(O\r)
+\stackrel{(2)}{=}E.\]</span> 以上より <span class="math display">\[\exp
+\l(\theta I\r) =R_{\theta }\]</span>
+であることが示された．（証明終）<br />
+以上の［1］，［2］の証明では写像<span
+class="math inline">\(\exp\)</span>が存在するならば <span
+class="math inline">\(\exp \l(rE+\theta I\r) = e^r R_{\theta
+}\)</span>に定まることを示した．上式が確かに(1)(2)(3)を満たすことを示そう．</p>
+<p>なお <span class="math display">\[\exp {\pi I }+E=0\]</span>
+はオイラーの等式である．<br />
+また <span class="math display">\[\begin{split}
+        \dv{}{Z}\exp Z\bigg|_{Z=A}=\, &amp;  \lim_{\l|H\r|  \to 0}
+\l\{\exp \l(A+H\r) -\exp A\r\}{H}^{-1}
+    \\
+    =\, &amp;   \lim_{\l|H\r|  \to 0} \exp A\l\{\exp \l(H\r)
+-E\r\}{H}^{-1}\\
+    =\, &amp; \exp A
+    \end{split}\]</span> であることから写像<span
+class="math inline">\(\exp\)</span>が複素数平面全域において全方向から微分可能つまり正則であることも確認できる．</p>
+<h2 id="その他の関数の拡張">その他の関数の拡張</h2>
+<p>以下，簡単のため複素数<span
+class="math inline">\(Z\)</span>に対し<span class="math inline">\(\exp
+Z\)</span>を<span
+class="math inline">\(e^{Z}\)</span>と表すことにする．<br />
+オイラーの公式より <span class="math display">\[\begin{aligned}
+    e^{\theta I}=E \cos \theta +I \sin \theta \label{オイラー１}\\
+    e^{-\theta I}=E \cos \theta -I \sin
+\theta\label{オイラー２}\end{aligned}\]</span> <a href="#オイラー１"
+data-reference-type="eqref"
+data-reference="オイラー１">[オイラー１]</a>と<a href="#オイラー２"
+data-reference-type="eqref"
+data-reference="オイラー２">[オイラー２]</a>を足して<span
+class="math inline">\(2\)</span>で割ると <span class="math display">\[E
+\cos \theta =\drac{e^{\theta I}+e^{-\theta I}}{2}\]</span> <a
+href="#オイラー１" data-reference-type="eqref"
+data-reference="オイラー１">[オイラー１]</a>から<a href="#オイラー２"
+data-reference-type="eqref"
+data-reference="オイラー２">[オイラー２]</a>を引いて<span
+class="math inline">\(\drac{1}{2}I^{-1}\)</span>かけると <span
+class="math display">\[E \sin \theta =\drac{e^{\theta I}-e^{-\theta I
+}}{2}I^{-1}\]</span>
+である．これを用いて三角関数を拡張することにする．すなわち複素数<span
+class="math inline">\(\Theta\)</span>の三角関数を <span
+class="math display">\[\begin{aligned}
+\label{sinの定義}
+     \cos \Theta &amp;:=\drac{e^{\Theta I}+e^{-\Theta I}}{2}\\
+\label{cosの定義}
+     \sin \Theta &amp;:=\drac{e^{\Theta I}-e^{-\Theta I
+}}{2}I^{-1}\end{aligned}\]</span> と定めることにする．<a
+href="#sinの定義" data-reference-type="eqref"
+data-reference="sinの定義">[sinの定義]</a>，<a href="#cosの定義"
+data-reference-type="eqref"
+data-reference="cosの定義">[cosの定義]</a>の定義のもとで <span
+class="math display">\[\begin{aligned}
+    \cos \l(\theta E\r) =E \cos \theta \\
+    \sin \l(\theta E\r) =E \sin \theta \end{aligned}\]</span>
+である．行列の微分公式から <span class="math display">\[\begin{aligned}
+    \dv{}{\Theta}\cos
+\Theta&amp;=\drac{Ie^{I\Theta}-Ie^{-I\Theta}}{2}=-\drac{e^{\Theta
+I}-e^{-\Theta I}}{2}I^{-1}=-\sin \Theta\\
+    \dv{}{\Theta}\sin
+\Theta&amp;=\drac{Ie^{I\Theta}+Ie^{-I\Theta}}{2}I^{-1}=\drac{e^{\Theta
+I}+e^{-\Theta I}}{2}=\cos \Theta\end{aligned}\]</span>
+が得られる．これは実数における微分と対応し，かつここから複素数の写像<span
+class="math inline">\(\cos\)</span>，<span
+class="math inline">\(\sin\)</span>が正則であることが確認できる．</p>
+<h1 id="複素数の積分">複素数の積分</h1>
+<p>複素数の積分を以下で定義する． <span
+class="math display">\[\int_{C}^{} f\l(Z\r) \, dZ \equiv \lim_{n \to
+\infty} \sum_{k=1}^{n}  f\l(Z_{k}\r) \Delta Z_k\]</span> ただし<span
+class="math inline">\(\Delta Z_k=Z_{k}-Z_{k-1}\)</span>とする．</p>
+<p>ここで<span class="math inline">\(Z=xE+yI\)</span>，<span
+class="math inline">\(f\l(xE+yI\r) =g\l(x,y\r) E+h\l(x,y\r)
+I\)</span>とおくと，<span class="math inline">\(x:x_1 \to
+x_n\)</span>，<span class="math inline">\(y:y_1 \to y_n\)</span> <span
+class="math display">\[\begin{split}
+        \int_{C}^{} f\l(Z\r) \, dZ =\, &amp;
+        \lim_{ \delta\l(\Delta\r)  \to 0} \sum_{k=1}^{n}
+\l\{g\l(x_k,y_k\r) E+h\l(x,y\r) I\r\}\l(\Delta x_kE +\Delta y_k I\r) \\
+        =\, &amp; \lim_{ \delta\l(\Delta\r)  \to 0} \sum_{k=1}^{n}
+\left\{\left(g\Delta x_k -h\Delta y_k\right)E+\l(g\Delta y_k+h\Delta
+x_k\r)I \right\}\\
+        =\, &amp; \left(\int_{x_0}^{x_n} g\l(x,y\l(x\r) \r) \,
+dx-\int_{y_0}^{y_n} h\l(x\l(y\r), y\r) \, dy\right)E
+        \\
+        &amp;\qq \qq
+        +\l(\int_{y_0}^{y_n} g\l(x\l(y\r) ,y\r) dy+\int_{x_0}^{x_n}
+h\l(x,y\l(x\r) \r) \, dx\r) I
+    \end{split}\]</span> である．</p>
+<h2 id="コーシーの積分定理">コーシーの積分定理</h2>
+<p><span class="math inline">\(x=x\l(t\r)
+,y=y\l(t\r)\)</span>とすると合成関数の微分法によって <span
+class="math display">\[\begin{split}
+        \int_{C}^{} f\l(Z\r) \, dZ =\, &amp;
+        E\int_{t_0}^{t_n} \left\{g\l(x\l(t\r) ,y\l(t\r) \r) \,
+x&#39;\l(t\r) -h\l(x\l(t\r) ,y\l(t\r) \r) \, y&#39;\l(t\r)\right\}\,
+dt  \\
+        &amp;\qq
+        +I\int_{t_0}^{t_n} \left\{g\l(x\l(t\r) ,y\l(t\r) \r) \,
+y&#39;\l(t\r) +h\l(x\l(t\r) ,y\l(t\r) \r) \, x&#39;\l(t\r)\right\}\, dt
+    \end{split}\]</span> であることがわかる．</p>
+<p>ここで<span
+class="math inline">\(f\)</span>が正則であるとすると，コーシー・リーマンの関係式
+<span class="math display">\[\begin{aligned}
+        \delu{g}{y}&amp;=-\delu{h}{x} \label{cl1}\\
+        \delu{g}{x}&amp;=\delu{h}{y}\label{cl2}
+    \end{aligned}\]</span> を満たす． <span
+class="math display">\[\begin{aligned}
+    u&amp;=\int_{}^{} g \, dx+\int_{}^{} \left\{\l(-h\r)
+-\delu{}{y}\l(\int_{}^{} g \, dx\r)    \right\} dy\\
+    v&amp;=\int_{}^{} h \, dx+\int_{}^{} \left\{g -
+\delu{}{x}\l(\int_{}^{} g \, dy\r)\right\} \, dx\end{aligned}\]</span>
+とおくと<a href="#cl1" data-reference-type="eqref"
+data-reference="cl1">[cl1]</a>,<a href="#cl2"
+data-reference-type="eqref" data-reference="cl2">[cl2]</a>より <span
+class="math display">\[\begin{split}
+        \int_{C}^{} f\l(Z\r) \, dZ =\, &amp;
+        E\int_{t_0}^{t_n} \left(\delu{u}{x} \drac{dx}{dt}
++\delu{u}{y}\drac{dy}{dt}\right) \, dt
+        +I\int_{t_0}^{t_n} \left(\delu{v}{y}\drac{dy}{dt}
++\delu{v}{x}\drac{dx}{dt}\right)\, dt \\
+        &amp;=\, E \int_{t_0}^{t_n} \drac{du}{dt }\, dt +I
+\int_{t_0}^{t_n} \drac{dv }{dt }\, dt  \\
+        &amp;=\, E\left\{ u\l(x\l(t_n\r) ,y\l(t_n\r)
+\r)  -u\l(x\l(t_0\r) ,y\l(t_0\r) \r)  \right\}
+        \\
+        &amp;\qq  +I\left\{ v\l(x\l(t_n\r) ,y\l(t_n\r) \r)
+-v\l(x\l(t_0\r) ,y\l(t_0\r) \r)  \right\}\\
+        &amp;=\, O
+    \end{split}\]</span>
+である．コーシーの積分定理が合成関数の微分公式としてあっさり証明できてしまったわけである．（？）本来あるべき「単純閉曲線<span
+class="math inline">\(C\)</span>が含まれる領域<span
+class="math inline">\(D\)</span>の内部で常に正則である」<span
+class="math inline">\(\cdots
+(*)\)</span>という条件が無視されているが，これは<span
+class="math inline">\(u\)</span>と<span
+class="math inline">\(v\)</span>がともに連続であるという条件に言い換えられたと考えられる．（例えば<span
+class="math inline">\(f\l(Z\r) =Z^{-1}\)</span>の単位円上の積分を<span
+class="math inline">\(x=\cos t,y=\sin
+t\)</span>の置換積分により計算してみればわかる．）</p>
+<p>結局パラメータ積分を用いる方法ではここまでが限界なのでグリーンの定理や区間縮小法を用いて（妥協しつつ）以下を示すことになる．</p>
+<p><span class="math display">\[\oint_{C} f\l(Z\r) \, dZ=O\]</span>
+コーシーの積分定理により積分の値が経路によらないことを示すことができる．
+行列の置換積分を示したい．以降簡単のため複素数<span
+class="math inline">\(A\)</span>の逆行列を<span
+class="math inline">\(\drac{1}{A}\)</span>のように簡略化して表すことにする．</p>
+<h2 id="コーシーの積分公式">コーシーの積分公式</h2>
+<p><span class="math display">\[f\l(A\r) =\drac{-I}{2\pi }\oint_{C}
+f\l(Z\r) \l(Z-A\r) ^{-1}\, dZ\]</span></p>
+<h3 class="unnumbered" id="証明">証明</h3>
+<p><span class="math inline">\(Z=xE+yI+A,x=\cos \theta ,y=\sin
+\theta\)</span>とパラメータ表示することで<span
+class="math inline">\(C\)</span>を中心<span
+class="math inline">\(A\)</span>の円周上の経路として <span
+class="math display">\[\oint_{C}^{} \l(Z-A\r) ^{-1}\, dZ=2\pi I\]</span>
+がわかる．よって <span class="math display">\[\oint_{C}^{} f\l(Z\r)
+\l(Z-A\r) ^{-1}\, dZ
+    = \oint_{C} \left\{ f\l(Z\r) -f\l(A\r)  \right\}\l(Z-A\r) ^{-1}\,
+dZ+2\pi If\l(A\r)\]</span> であり第一項は<span
+class="math inline">\(C\)</span>の半径<span
+class="math inline">\(\rho\)</span>として<span
+class="math inline">\(C\)</span>上において<span
+class="math inline">\(\l|f\l(Z\r) -f\l(A\r) \r| &lt;\e\)</span>とすると
+<span class="math display">\[\l|\oint_{C} \left\{ f\l(Z\r)
+-f\l(A\r)  \right\}\l(Z-A\r) ^{-1}\, dZ\r|
+    \leq  \oint_{C} \drac{1}{\rho}\e \, dZ=2\pi
+\rho\drac{1}{\rho}\e=2\pi \e\]</span> であり，<span
+class="math inline">\(\e \to 0\)</span>で<span
+class="math inline">\(2\pi \e \to
+0\)</span>になるので示す等式が得られた．</p>
+<h2 id="代数学の基本定理">代数学の基本定理</h2>
+<h2 id="留数定理">留数定理</h2>
+<h1 id="解析的延長">解析的延長</h1>
+<p>本章では実関数の複素数への拡張が正則なものとして一通りに定まることを示す．<br />
+</p>
