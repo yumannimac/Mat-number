@@ -32,6 +32,9 @@ $$
 \newcommand{\delu}[3][]{\drac{\partial^{#1} {#2}}{\partial {#3}^{#1}}}
 $$
 
+
+
+
 # 複素数の導入に含まれる問題 {#introduction}
 
 虚数単位$i$は通常二次方程式 
